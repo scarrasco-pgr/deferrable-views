@@ -1,0 +1,33 @@
+<div class="p-8 flex flex-col">
+  <mat-form-field class="w-1/2 self-center">
+    <mat-label>Search</mat-label>
+    <input matInput [formControl]="control" />
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+  @if(store.isLoading()){
+  <mat-spinner></mat-spinner>
+  } @else if (store.hasError()) {
+  <p>Sorry an error has occurred</p>
+  } @else {
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+    @for (p of store.products(); track p.id) {
+    <mat-card appearance="outlined">
+      <mat-card-header>
+        <mat-card-title>{{ p.title }}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image [src]="p.thumbnail" alt="Image of product" />
+      <mat-card-content>{{ p.description }}</mat-card-content>
+      <mat-card-actions class="mt-auto">
+        <mat-icon>star</mat-icon>
+        <span>{{ p.rating }}</span>
+        <mat-icon class="ml-4">attach_money</mat-icon>
+        <span>{{ p.price }}</span>
+        <a class="ml-auto" mat-button [routerLink]="[p.id]">Learn More</a>
+      </mat-card-actions>
+    </mat-card>
+    } @empty {
+    <p>No Posts</p>
+    }
+  </div>
+  }
+</div>
