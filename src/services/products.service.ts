@@ -24,4 +24,9 @@ export class ProductsService {
       )
     );
   }
+  getSingle(id: string) {
+    return firstValueFrom(
+      this.#client.get<Product>(`${environment.apiUrl}/${this.#route}/${id}`)
+    );
+  }
 }

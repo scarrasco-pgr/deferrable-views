@@ -1,0 +1,19 @@
+<div class="p-8">
+  <a
+    mat-button
+    routerLink="/products"
+    aria-label="Back arrow to navigate back to posts"
+  >
+    <mat-icon>arrow_back</mat-icon>
+    <span>Back</span>
+  </a>
+  <mat-tab-group>
+    <mat-tab label="Overview"> Overview </mat-tab>
+    <mat-tab label="Images">
+      <app-images [product]="store.product()!" />
+    </mat-tab>
+    <mat-tab label="Reviews">
+      <app-reviews [product]="store.product()!" />
+    </mat-tab>
+  </mat-tab-group>
+</div>

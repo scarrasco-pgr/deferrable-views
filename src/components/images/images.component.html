@@ -1,0 +1,17 @@
+@if(product()) {
+<div class="carousel-row">
+  <app-carousel [aria-label]="'Featured components'">
+    @for (image of product().images; track image) {
+    <mat-card>
+      <img
+        [src]="image"
+        carousel-item
+        class="carousel-item docs-featured-components-carousel-item"
+      />
+    </mat-card>
+
+    }
+  </app-carousel>
+</div>
+
+}

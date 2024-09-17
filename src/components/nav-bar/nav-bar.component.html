@@ -20,15 +20,23 @@
         </svg>
         Deferrable Views
       </a>
-      <a mat-button routerLink="products" routerLinkActive="router-link-active"
+      <a
+        mat-button
+        routerLink="products"
+        routerLinkActive="router-link-active"
+        routerLinkActive="!text-sky-300"
         >Products</a
       >
-      <a mat-button routerLink="/recipes">Recipes</a>
-      <a mat-button routerLink="/posts">Posts</a>
+      <a mat-button routerLink="/recipes" routerLinkActive="!text-sky-300"
+        >Recipes</a
+      >
+      <a mat-button routerLink="/posts" routerLinkActive="!text-sky-300"
+        >Posts</a
+      >
     </div>
     <a
       mat-icon-button
-      href="https://github.com/angular/components"
+      href="https://github.com/scarrasco-pgr/deferrable-views"
       aria-label="GitHub Repository"
     >
       <svg viewBox="0 0 20 20" aria-hidden="true">

@@ -18,6 +18,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'products/:id',
+    loadComponent: () =>
+      import('../components/product-detail/product-detail.component').then(
+        (c) => c.ProductDetailComponent
+      ),
+  },
+  {
     path: 'posts',
     loadComponent: () =>
       import('../components/posts-list/posts-list.component').then(

@@ -1,4 +1,9 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnInit,
+} from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,12 +17,12 @@ import { debounceTime } from 'rxjs/internal/operators/debounceTime';
 import { tap } from 'rxjs/internal/operators/tap';
 import { HighlightPipe } from '../../pipes/highlight.pipe';
 import { ProductsStore } from '../../store/products.store';
+import { ErrorComponent } from '../error/error.component';
 import { ResultsFoundComponent } from '../results-found/results-found.component';
 @Component({
   standalone: true,
   imports: [
     MatCardModule,
-    MatButtonModule,
     MatProgressSpinnerModule,
     MatFormFieldModule,
     MatInputModule,
@@ -27,9 +32,11 @@ import { ResultsFoundComponent } from '../results-found/results-found.component'
     RouterLink,
     HighlightPipe,
     ResultsFoundComponent,
+    ErrorComponent,
   ],
   selector: 'app-products-list',
   templateUrl: 'products-list.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsListComponent implements OnInit {
   readonly store = inject(ProductsStore);
@@ -40,7 +47,11 @@ export class ProductsListComponent implements OnInit {
       tap((input) => this.store.query(input ?? ''))
     )
   );
+
   ngOnInit(): void {
+    this.store.loadAll();
+  }
+  retry(): void {
     this.store.loadAll();
   }
 }

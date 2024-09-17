@@ -1,0 +1,9 @@
+<div class="flex bg-red-500 justify-between p-2 items-center text-red-100">
+  <div class="flex items-center gap-2">
+    <mat-icon>error</mat-icon>
+    <span>Sorry an unexpected error has occurred</span>
+  </div>
+  <button type="button" mat-raised-button (click)="onRetry.emit(true)">
+    Try again
+  </button>
+</div>
