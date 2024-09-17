@@ -10,7 +10,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterLink } from '@angular/router';
 import { debounceTime } from 'rxjs/internal/operators/debounceTime';
 import { tap } from 'rxjs/internal/operators/tap';
+import { HighlightPipe } from '../../pipes/highlight.pipe';
 import { ProductsStore } from '../../store/products.store';
+import { ResultsFoundComponent } from '../results-found/results-found.component';
 @Component({
   standalone: true,
   imports: [
@@ -23,6 +25,8 @@ import { ProductsStore } from '../../store/products.store';
     MatButtonModule,
     MatIconModule,
     RouterLink,
+    HighlightPipe,
+    ResultsFoundComponent,
   ],
   selector: 'app-products-list',
   templateUrl: 'products-list.component.html',

@@ -7,10 +7,29 @@ export const routes: Routes = [
       import('../components/home/home.component').then((c) => c.HomeComponent),
   },
   {
+    path: 'home',
+    redirectTo: '',
+  },
+  {
     path: 'products',
     loadComponent: () =>
       import('../components/products-list/products-list.component').then(
         (c) => c.ProductsListComponent
+      ),
+  },
+  {
+    path: 'posts',
+    loadComponent: () =>
+      import('../components/posts-list/posts-list.component').then(
+        (c) => c.PostsListComponent
+      ),
+  },
+
+  {
+    path: 'recipes',
+    loadComponent: () =>
+      import('../components/recipes-list/recipes-list.component').then(
+        (c) => c.RecipesListComponent
       ),
   },
 ];

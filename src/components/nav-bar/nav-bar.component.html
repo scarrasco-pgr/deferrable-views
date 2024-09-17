@@ -1,7 +1,7 @@
 <nav class="navbar">
   <mat-toolbar>
     <div class="flex-1">
-      <a mat-button aria-label="Angular Material">
+      <a mat-button aria-label="Angular Material" routerLink="/home">
         <svg
           matButtonIcon
           class="w-6 h-6"
@@ -23,8 +23,8 @@
       <a mat-button routerLink="products" routerLinkActive="router-link-active"
         >Products</a
       >
-      <a mat-button>Recipes</a>
-      <a mat-button>Posts</a>
+      <a mat-button routerLink="/recipes">Recipes</a>
+      <a mat-button routerLink="/posts">Posts</a>
     </div>
     <a
       mat-icon-button

@@ -1,5 +1,5 @@
 {
-  "conventionalCommits.scopes": ["navbar", "products"],
+  "conventionalCommits.scopes": ["navbar", "products", "routes"],
   "angular-schematics.schematicsDefaultOptions": {
     "angular-*": {
       "externalTemplate": true
