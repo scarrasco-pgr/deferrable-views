@@ -1,0 +1,42 @@
+<div class="flex items-center">
+  <h2>{{ product().title }}</h2>
+  <mat-chip-set aria-label="Tags" class="ml-6">
+    @for (t of product().tags; track $index) {
+    <mat-chip>{{ t }}</mat-chip>
+    }
+  </mat-chip-set>
+  <app-rating
+    [rating]="product().rating"
+    [reviews]="product().reviews.length"
+    class="ml-3"
+  ></app-rating>
+</div>
+<img [src]="product().thumbnail" />
+<h2>Price {{ product().price | currency }}</h2>
+<h3 class="text-green-600">In stock {{ product().stock }}</h3>
+<mat-accordion multi class="w-1/2">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Description</mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>{{ product().description }}</p>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Dimensions</mat-panel-title>
+    </mat-expansion-panel-header>
+    @defer(){<app-dimensions [product]="product()" />}
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Details</mat-panel-title>
+    </mat-expansion-panel-header>
+    @defer(){<app-details [product]="product()" />}
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Return policy</mat-panel-title>
+    </mat-expansion-panel-header>
+    @defer(){<app-return-policy [product]="product()" />}
+  </mat-expansion-panel>
+</mat-accordion>

@@ -13,6 +13,7 @@ type ProductsState = {
   product: Product | undefined;
   filter: string | undefined;
   error: string | undefined;
+  limit: number;
 };
 
 const initialState: ProductsState = {
@@ -20,6 +21,7 @@ const initialState: ProductsState = {
   product: undefined,
   filter: undefined,
   error: undefined,
+  limit: 60,
 };
 
 export const ProductsStore = signalStore(
@@ -30,7 +32,7 @@ export const ProductsStore = signalStore(
     async loadAll(): Promise<void> {
       patchState(store, initialState, setLoading());
       try {
-        const products = (await service.get()).products;
+        const products = (await service.get(store.limit())).products;
         patchState(store, { products });
       } catch (e) {
         const error = (e as HttpErrorResponse).message;
@@ -51,9 +53,13 @@ export const ProductsStore = signalStore(
         patchState(store, setFulfilled);
       }
     },
-    async query(filter: string): Promise<void> {
-      patchState(store, { filter }, setLoading());
-      const products = (await service.query(filter)).products;
+    async query(filter: string, limit?: number): Promise<void> {
+      patchState(
+        store,
+        { filter, limit: limit ?? store.limit() },
+        setLoading()
+      );
+      const products = (await service.query(filter, store.limit())).products;
       patchState(store, { products }, setFulfilled());
     },
   }))

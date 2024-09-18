@@ -12,7 +12,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSelectModule } from '@angular/material/select';
 import { RouterLink } from '@angular/router';
+import { distinctUntilChanged } from 'rxjs';
 import { debounceTime } from 'rxjs/internal/operators/debounceTime';
 import { tap } from 'rxjs/internal/operators/tap';
 import { HighlightPipe } from '../../pipes/highlight.pipe';
@@ -33,6 +35,7 @@ import { ResultsFoundComponent } from '../results-found/results-found.component'
     HighlightPipe,
     ResultsFoundComponent,
     ErrorComponent,
+    MatSelectModule,
   ],
   selector: 'app-products-list',
   templateUrl: 'products-list.component.html',
@@ -40,11 +43,22 @@ import { ResultsFoundComponent } from '../results-found/results-found.component'
 })
 export class ProductsListComponent implements OnInit {
   readonly store = inject(ProductsStore);
-  control = new FormControl(this.store.filter(), { nonNullable: true });
+  filterControl = new FormControl(this.store.filter(), { nonNullable: true });
+  limitControl = new FormControl(this.store.limit(), { nonNullable: true });
   search = toSignal(
-    this.control.valueChanges.pipe(
+    this.filterControl.valueChanges.pipe(
+      distinctUntilChanged(),
       debounceTime(500),
       tap((input) => this.store.query(input ?? ''))
+    )
+  );
+
+  limitItems = toSignal(
+    this.limitControl.valueChanges.pipe(
+      distinctUntilChanged(),
+      tap((limit) => {
+        this.store.query(this.store.filter() ?? '', limit);
+      })
     )
   );
 

@@ -1,9 +1,22 @@
+<h1 class="text-center">Best Products Always!</h1>
 <div class="p-8 flex flex-col">
-  <mat-form-field class="w-1/2 self-center">
-    <mat-label>Search</mat-label>
-    <input matInput [formControl]="control" #search />
-    <mat-icon matSuffix>search</mat-icon>
-  </mat-form-field>
+  <div class="flex justify-between">
+    <mat-form-field class="w-1/2">
+      <mat-label>Search</mat-label>
+      <input matInput [formControl]="filterControl" #search />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Limit Items</mat-label>
+      <mat-select [formControl]="limitControl">
+        <mat-option [value]="15">15</mat-option>
+        <mat-option [value]="30">30</mat-option>
+        <mat-option [value]="60">60</mat-option>
+        <mat-option [value]="120">120</mat-option>
+        <mat-option [value]="0">Show all</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
   @defer (on interaction(search)) {
   <app-results-found [results]="store.products().length" />
   } @if(store.isLoading()){
@@ -11,14 +24,19 @@
   } @else if (store.error()) {
   <app-error (onRetry)="retry()" />
   } @else {
-  <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+  <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
     @for (p of store.products(); track p.id) {
     <a [routerLink]="[p.id]">
-      <mat-card appearance="outlined">
+      <mat-card appearance="outlined" class="h-full">
         <mat-card-header>
           <mat-card-title>{{ p.title }}</mat-card-title>
         </mat-card-header>
-        <img mat-card-image [src]="p.thumbnail" alt="Image of product" />
+        <img
+          mat-card-xl-image
+          [src]="p.thumbnail"
+          class="self-center"
+          [alt]="p.sku"
+        />
         <mat-card-content
           [innerHTML]="p.description | appHighlight : store.filter() ?? ''"
         ></mat-card-content>
@@ -27,7 +45,7 @@
           <span>{{ p.rating }}</span>
           <mat-icon class="ml-4">attach_money</mat-icon>
           <span>{{ p.price }}</span>
-          <a class="ml-auto" mat-button [routerLink]="[p.id]">Learn More</a>
+          <button class="ml-auto" mat-button>Learn More</button>
         </mat-card-actions>
       </mat-card>
     </a>

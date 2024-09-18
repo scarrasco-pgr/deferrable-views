@@ -1,8 +1,8 @@
 import { DatePipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { Product } from '../../models/product.model';
+import { ProductBaseDirective } from '../../directives/base-product.directive';
 
 @Component({
   standalone: true,
@@ -11,6 +11,4 @@ import { Product } from '../../models/product.model';
   templateUrl: './reviews.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ReviewsComponent {
-  product = input.required<Product>();
-}
+export class ReviewsComponent extends ProductBaseDirective {}

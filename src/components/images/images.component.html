@@ -1,17 +1,10 @@
 @if(product()) {
-<div class="carousel-row">
-  <app-carousel [aria-label]="'Featured components'">
-    @for (image of product().images; track image) {
-    <mat-card>
-      <img
-        [src]="image"
-        carousel-item
-        class="carousel-item docs-featured-components-carousel-item"
-      />
-    </mat-card>
-
-    }
-  </app-carousel>
+<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 mt-5">
+  @for (image of product().images; track image) {
+  <mat-card>
+    <img [src]="image" mat-card-xl-image class="self-center" />
+  </mat-card>
+  }
 </div>
 
 }

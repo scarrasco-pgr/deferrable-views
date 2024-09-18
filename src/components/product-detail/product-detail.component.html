@@ -1,3 +1,4 @@
+@if(store.product(); as product){
 <div class="p-8">
   <a
     mat-button
@@ -8,12 +9,23 @@
     <span>Back</span>
   </a>
   <mat-tab-group>
-    <mat-tab label="Overview"> Overview </mat-tab>
-    <mat-tab label="Images">
-      <app-images [product]="store.product()!" />
+    <mat-tab label="Overview">
+      <app-overview [product]="product" class="flex flex-col items-center p-16"
+    /></mat-tab>
+    <mat-tab label="Images" #image>
+      @defer (on viewport) {<app-images [product]="product" />} @placeholder {
+      <div>Images placeholder</div>
+      }
     </mat-tab>
     <mat-tab label="Reviews">
-      <app-reviews [product]="store.product()!" />
+      @defer(on viewport){<app-reviews [product]="product" />} @placeholder {
+      <div>Reviews placeholder</div>
+      }
     </mat-tab>
   </mat-tab-group>
 </div>
+} @else if (store.isLoading()) {
+<mat-spinner></mat-spinner>
+} @else {
+<app-error></app-error>
+}

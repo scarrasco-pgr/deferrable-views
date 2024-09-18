@@ -12,15 +12,17 @@ interface ProductsResponse extends Pagination {
 export class ProductsService {
   #client = inject(HttpClient);
   #route = 'products';
-  get() {
-    return firstValueFrom(
-      this.#client.get<ProductsResponse>(`${environment.apiUrl}/${this.#route}`)
-    );
-  }
-  query(filter: string) {
+  get(limit?: number) {
     return firstValueFrom(
       this.#client.get<ProductsResponse>(
-        `${environment.apiUrl}/${this.#route}/search?q=${filter}`
+        `${environment.apiUrl}/${this.#route}/?limit=${limit}`
+      )
+    );
+  }
+  query(filter: string, limit?: number) {
+    return firstValueFrom(
+      this.#client.get<ProductsResponse>(
+        `${environment.apiUrl}/${this.#route}/search?q=${filter}&limit=${limit}`
       )
     );
   }

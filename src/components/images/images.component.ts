@@ -1,15 +1,12 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { Product } from '../../models/product.model';
-import { Carousel, CarouselItem } from '../carousel/carousel.component';
+import { ProductBaseDirective } from '../../directives/base-product.directive';
 
 @Component({
   standalone: true,
-  imports: [Carousel, CarouselItem, MatCardModule],
+  imports: [MatCardModule],
   selector: 'app-images',
   templateUrl: 'images.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ImagesComponent {
-  product = input.required<Product>();
-}
+export class ImagesComponent extends ProductBaseDirective {}
