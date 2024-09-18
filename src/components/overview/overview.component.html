@@ -25,18 +25,21 @@
     <mat-expansion-panel-header>
       <mat-panel-title>Dimensions</mat-panel-title>
     </mat-expansion-panel-header>
-    @defer(){<app-dimensions [product]="product()" />}
+    <!-- Prime Candidate on idle -->
+    <app-dimensions [product]="product()" />
   </mat-expansion-panel>
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>Details</mat-panel-title>
     </mat-expansion-panel-header>
-    @defer(){<app-details [product]="product()" />}
+    <!-- Prime Candidate on idle -->
+    <app-details [product]="product()" />
   </mat-expansion-panel>
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>Return policy</mat-panel-title>
     </mat-expansion-panel-header>
-    @defer(){<app-return-policy [product]="product()" />}
+    <!-- Prime Candidate on idle -->
+    <app-return-policy [product]="product()" />
   </mat-expansion-panel>
 </mat-accordion>

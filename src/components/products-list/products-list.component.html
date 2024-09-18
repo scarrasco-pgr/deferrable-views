@@ -17,9 +17,9 @@
       </mat-select>
     </mat-form-field>
   </div>
-  @defer (on interaction(search)) {
+  <!-- Prime Candidate on interaction -->
   <app-results-found [results]="store.products().length" />
-  } @if(store.isLoading()){
+  @if(store.isLoading()){
   <mat-spinner></mat-spinner>
   } @else if (store.error()) {
   <app-error (onRetry)="retry()" />
