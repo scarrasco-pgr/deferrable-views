@@ -22,21 +22,6 @@ import { ProductsStore } from '../../store/products.store';
 import { ErrorComponent } from '../error/error.component';
 import { ResultsFoundComponent } from '../results-found/results-found.component';
 @Component({
-  standalone: true,
-  imports: [
-    MatCardModule,
-    MatProgressSpinnerModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatIconModule,
-    RouterLink,
-    HighlightPipe,
-    ResultsFoundComponent,
-    ErrorComponent,
-    MatSelectModule,
-  ],
   selector: 'app-products-list',
   templateUrl: 'products-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

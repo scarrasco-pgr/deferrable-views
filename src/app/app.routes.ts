@@ -1,10 +1,14 @@
 import { Routes } from '@angular/router';
+import { HomeComponent } from '../components/home/home.component';
+import { PostsListComponent } from '../components/posts-list/posts-list.component';
+import { ProductDetailComponent } from '../components/product-detail/product-detail.component';
+import { ProductsListComponent } from '../components/products-list/products-list.component';
+import { RecipesListComponent } from '../components/recipes-list/recipes-list.component';
 
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () =>
-      import('../components/home/home.component').then((c) => c.HomeComponent),
+    component: HomeComponent,
   },
   {
     path: 'home',
@@ -12,31 +16,19 @@ export const routes: Routes = [
   },
   {
     path: 'products',
-    loadComponent: () =>
-      import('../components/products-list/products-list.component').then(
-        (c) => c.ProductsListComponent
-      ),
+    component: ProductsListComponent,
   },
   {
     path: 'products/:id',
-    loadComponent: () =>
-      import('../components/product-detail/product-detail.component').then(
-        (c) => c.ProductDetailComponent
-      ),
+    component: ProductDetailComponent,
   },
   {
     path: 'posts',
-    loadComponent: () =>
-      import('../components/posts-list/posts-list.component').then(
-        (c) => c.PostsListComponent
-      ),
+    component: PostsListComponent,
   },
 
   {
     path: 'recipes',
-    loadComponent: () =>
-      import('../components/recipes-list/recipes-list.component').then(
-        (c) => c.RecipesListComponent
-      ),
+    component: RecipesListComponent,
   },
 ];

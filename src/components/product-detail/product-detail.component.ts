@@ -16,18 +16,6 @@ import { ImagesComponent } from '../images/images.component';
 import { OverviewComponent } from '../overview/overview.component';
 import { ReviewsComponent } from '../reviews/reviews.component';
 @Component({
-  standalone: true,
-  imports: [
-    MatTabsModule,
-    RouterLink,
-    MatButtonModule,
-    MatIconModule,
-    MatProgressSpinnerModule,
-    ReviewsComponent,
-    ImagesComponent,
-    OverviewComponent,
-    ErrorComponent,
-  ],
   selector: 'app-product-detail',
   templateUrl: 'product-detail.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

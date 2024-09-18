@@ -5,8 +5,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { ProductBaseDirective } from '../../directives/base-product.directive';
 
 @Component({
-  standalone: true,
-  imports: [MatIconModule, MatCardModule, DatePipe],
   selector: 'app-reviews',
   templateUrl: './reviews.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

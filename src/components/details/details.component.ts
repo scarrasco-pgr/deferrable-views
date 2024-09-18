@@ -3,7 +3,6 @@ import { ProductBaseDirective } from '../../directives/base-product.directive';
 
 @Component({
   selector: 'app-details',
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `<div class="flex justify-between">
       <span class="font-medium">Brand</span>
