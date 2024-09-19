@@ -1,9 +1,5 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from '../components/home/home.component';
-import { PostsListComponent } from '../components/posts-list/posts-list.component';
-import { ProductDetailComponent } from '../components/product-detail/product-detail.component';
-import { ProductsListComponent } from '../components/products-list/products-list.component';
-import { RecipesListComponent } from '../components/recipes-list/recipes-list.component';
 
 export const routes: Routes = [
   {
@@ -16,19 +12,20 @@ export const routes: Routes = [
   },
   {
     path: 'products',
-    component: ProductsListComponent,
-  },
-  {
-    path: 'products/:id',
-    component: ProductDetailComponent,
+    loadChildren: () =>
+      import('../modules/products/products.module').then(
+        (m) => m.ProductsModule
+      ),
   },
   {
     path: 'posts',
-    component: PostsListComponent,
+    loadChildren: () =>
+      import('../modules/posts/posts.module').then((m) => m.PostsModule),
   },
 
   {
     path: 'recipes',
-    component: RecipesListComponent,
+    loadChildren: () =>
+      import('../modules/recipes/recipes.module').then((m) => m.RecipesModule),
   },
 ];
