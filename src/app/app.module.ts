@@ -7,6 +7,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -27,10 +28,10 @@ import { RecipesListComponent } from '../components/recipes-list/recipes-list.co
 import { ResultsFoundComponent } from '../components/results-found/results-found.component';
 import { ReturnPolicyComponent } from '../components/return-policy/return-policy.component';
 import { ReviewsComponent } from '../components/reviews/reviews.component';
+import { StarRatingComponent } from '../components/star-rating/star-rating.component';
 import { HighlightPipe } from '../pipes/highlight.pipe';
 import { AppComponent } from './app.component';
 import { appConfig } from './app.config';
-import { StarRatingComponent } from '../components/star-rating/star-rating.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,8 @@ import { StarRatingComponent } from '../components/star-rating/star-rating.compo
     MatFormFieldModule,
     ReactiveFormsModule,
     HighlightPipe,
+    MatInputModule,
+    MatSelectModule,
   ],
   providers: [appConfig.providers],
   bootstrap: [AppComponent],
