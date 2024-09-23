@@ -33,9 +33,12 @@
         </mat-card-header>
         <img
           mat-card-xl-image
-          [src]="p.thumbnail"
-          class="self-center"
+          [ngSrc]="p.thumbnail"
           [alt]="p.sku"
+          [priority]="$index < 9"
+          class="self-center"
+          width="300"
+          height="300"
         />
         <mat-card-content
           [innerHTML]="p.description | appHighlight : store.filter() ?? ''"

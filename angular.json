@@ -5,18 +5,18 @@
     "defer-views": {
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-builders/custom-webpack:browser",
           "configurations": {
             "development": {
               "extractLicenses": false,
-              "optimization": false,
-              "sourceMap": true,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.development.ts"
                 }
-              ]
+              ],
+              "optimization": false,
+              "sourceMap": true
             },
             "production": {
               "budgets": [
@@ -42,9 +42,13 @@
                 "input": "public"
               }
             ],
-            "browser": "src/main.ts",
+            "customWebpackConfig": {
+              "path": "./webpack.config.js",
+              "replaceDuplicatePlugins": true
+            },
             "index": "src/index.html",
             "inlineStyleLanguage": "scss",
+            "main": "src/main.ts",
             "outputPath": "dist/defer-views",
             "polyfills": [],
             "scripts": [],

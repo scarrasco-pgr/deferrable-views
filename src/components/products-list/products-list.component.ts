@@ -21,6 +21,7 @@ import { HighlightPipe } from '../../pipes/highlight.pipe';
 import { ProductsStore } from '../../store/products.store';
 import { ErrorComponent } from '../error/error.component';
 import { ResultsFoundComponent } from '../results-found/results-found.component';
+import { NgOptimizedImage } from '@angular/common';
 @Component({
   standalone: true,
   imports: [
@@ -36,6 +37,7 @@ import { ResultsFoundComponent } from '../results-found/results-found.component'
     ResultsFoundComponent,
     ErrorComponent,
     MatSelectModule,
+    NgOptimizedImage
   ],
   selector: 'app-products-list',
   templateUrl: 'products-list.component.html',
