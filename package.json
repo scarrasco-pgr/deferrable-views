@@ -7,7 +7,10 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "production": "http-server dist/defer-views/ --proxy http://localhost:8080? --gzip"
+    "production": "http-server dist/defer-views/ --proxy http://localhost:8080? --gzip",
+    "e2e": "ng e2e",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "private": true,
   "dependencies": {
@@ -31,7 +34,9 @@
     "@angular-devkit/build-angular": "^18.2.8",
     "@angular/cli": "^18.2.8",
     "@angular/compiler-cli": "^18.2.8",
+    "@cypress/schematic": "^2.5.2",
     "@types/jasmine": "~5.1.0",
+    "@web/test-runner": "^0.18.3",
     "autoprefixer": "^10.4.20",
     "brotli-webpack-plugin": "^1.1.0",
     "compression-webpack-plugin": "^11.1.0",
@@ -45,6 +50,7 @@
     "lite-server": "^2.6.1",
     "postcss": "^8.4.45",
     "tailwindcss": "^3.4.10",
-    "typescript": "~5.5.2"
+    "typescript": "~5.5.2",
+    "cypress": "latest"
   }
 }

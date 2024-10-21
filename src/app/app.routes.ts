@@ -1,4 +1,7 @@
 import { Routes } from '@angular/router';
+import { ImagesComponent } from '../components/images/images.component';
+import { OverviewComponent } from '../components/overview/overview.component';
+import { ReviewsComponent } from '../components/reviews/reviews.component';
 
 export const routes: Routes = [
   {
@@ -23,6 +26,11 @@ export const routes: Routes = [
       import('../components/product-detail/product-detail.component').then(
         (c) => c.ProductDetailComponent
       ),
+    children: [
+      { path: 'overview', component: OverviewComponent },
+      { path: 'images', component: ImagesComponent },
+      { path: 'reviews', component: ReviewsComponent },
+    ],
   },
   {
     path: 'posts',

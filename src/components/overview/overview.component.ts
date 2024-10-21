@@ -1,8 +1,9 @@
-import { CurrencyPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CurrencyPipe, NgOptimizedImage } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ProductBaseDirective } from '../../directives/base-product.directive';
+import { ProductsStore } from '../../store/products.store';
 import { DetailsComponent } from '../details/details.component';
 import { DimensionsComponent } from '../dimensions/dimensions.component';
 import { ReturnPolicyComponent } from '../return-policy/return-policy.component';
@@ -17,9 +18,15 @@ import { StarRatingComponent } from '../star-rating/star-rating.component';
     MatChipsModule,
     CurrencyPipe,
     MatExpansionModule,
+    NgOptimizedImage,
   ],
   selector: 'app-overview',
   templateUrl: 'overview.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    class: 'flex flex-col items-center p-16',
+  },
 })
-export class OverviewComponent extends ProductBaseDirective {}
+export class OverviewComponent extends ProductBaseDirective {
+  store = inject(ProductsStore);
+}

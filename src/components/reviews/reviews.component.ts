@@ -1,8 +1,9 @@
 import { DatePipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { ProductBaseDirective } from '../../directives/base-product.directive';
+import { ProductsStore } from '../../store/products.store';
 
 @Component({
   standalone: true,
@@ -11,4 +12,6 @@ import { ProductBaseDirective } from '../../directives/base-product.directive';
   templateUrl: './reviews.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ReviewsComponent extends ProductBaseDirective {}
+export class ReviewsComponent extends ProductBaseDirective {
+  store = inject(ProductsStore);
+}

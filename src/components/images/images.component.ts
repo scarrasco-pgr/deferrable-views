@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { ProductBaseDirective } from '../../directives/base-product.directive';
+import { ProductsStore } from '../../store/products.store';
 
 @Component({
   standalone: true,
@@ -9,4 +10,6 @@ import { ProductBaseDirective } from '../../directives/base-product.directive';
   templateUrl: 'images.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ImagesComponent extends ProductBaseDirective {}
+export class ImagesComponent extends ProductBaseDirective {
+  store = inject(ProductsStore);
+}
