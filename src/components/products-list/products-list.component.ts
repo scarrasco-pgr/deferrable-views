@@ -1,3 +1,4 @@
+import { NgOptimizedImage } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -13,7 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { distinctUntilChanged } from 'rxjs';
 import { debounceTime } from 'rxjs/internal/operators/debounceTime';
 import { tap } from 'rxjs/internal/operators/tap';
@@ -21,7 +22,6 @@ import { HighlightPipe } from '../../pipes/highlight.pipe';
 import { ProductsStore } from '../../store/products.store';
 import { ErrorComponent } from '../error/error.component';
 import { ResultsFoundComponent } from '../results-found/results-found.component';
-import { NgOptimizedImage } from '@angular/common';
 @Component({
   standalone: true,
   imports: [
@@ -37,13 +37,14 @@ import { NgOptimizedImage } from '@angular/common';
     ResultsFoundComponent,
     ErrorComponent,
     MatSelectModule,
-    NgOptimizedImage
+    NgOptimizedImage,
   ],
   selector: 'app-products-list',
   templateUrl: 'products-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsListComponent implements OnInit {
+  router = inject(Router);
   readonly store = inject(ProductsStore);
   filterControl = new FormControl(this.store.filter(), { nonNullable: true });
   limitControl = new FormControl(this.store.limit(), { nonNullable: true });
@@ -51,7 +52,13 @@ export class ProductsListComponent implements OnInit {
     this.filterControl.valueChanges.pipe(
       distinctUntilChanged(),
       debounceTime(500),
-      tap((input) => this.store.query(input ?? ''))
+      tap((input) => {
+        this.store.query(input ?? '');
+        this.router.navigate([], {
+          queryParams: { q: input },
+          queryParamsHandling: 'merge',
+        });
+      })
     )
   );
 
@@ -60,6 +67,10 @@ export class ProductsListComponent implements OnInit {
       distinctUntilChanged(),
       tap((limit) => {
         this.store.query(this.store.filter() ?? '', limit);
+        this.router.navigate([], {
+          queryParams: { limit },
+          queryParamsHandling: 'merge',
+        });
       })
     )
   );

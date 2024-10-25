@@ -1,7 +1,4 @@
 import { Routes } from '@angular/router';
-import { ImagesComponent } from '../components/images/images.component';
-import { OverviewComponent } from '../components/overview/overview.component';
-import { ReviewsComponent } from '../components/reviews/reviews.component';
 
 export const routes: Routes = [
   {
@@ -27,9 +24,27 @@ export const routes: Routes = [
         (c) => c.ProductDetailComponent
       ),
     children: [
-      { path: 'overview', component: OverviewComponent },
-      { path: 'images', component: ImagesComponent },
-      { path: 'reviews', component: ReviewsComponent },
+      {
+        path: 'overview',
+        loadComponent: () =>
+          import('../components/overview/overview.component').then(
+            (c) => c.OverviewComponent
+          ),
+      },
+      {
+        path: 'images',
+        loadComponent: () =>
+          import('../components/images/images.component').then(
+            (c) => c.ImagesComponent
+          ),
+      },
+      {
+        path: 'reviews',
+        loadComponent: () =>
+          import('../components/reviews/reviews.component').then(
+            (c) => c.ReviewsComponent
+          ),
+      },
     ],
   },
   {

@@ -1,3 +1,4 @@
+import { TitleCasePipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -15,7 +16,6 @@ import { ErrorComponent } from '../error/error.component';
 import { ImagesComponent } from '../images/images.component';
 import { OverviewComponent } from '../overview/overview.component';
 import { ReviewsComponent } from '../reviews/reviews.component';
-import { TitleCasePipe } from '@angular/common';
 @Component({
   standalone: true,
   imports: [

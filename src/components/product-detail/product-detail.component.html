@@ -20,23 +20,7 @@
     </a>
     }
   </nav>
-  <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
-  <router-outlet />
-  <!-- <mat-tab-group>
-    <mat-tab label="Overview" routerLink="/overview">
-      <router-outlet></router-outlet>
-    </mat-tab>
-    <mat-tab label="Images" #image>
-      @defer (on viewport) {<app-images [product]="product" />} @placeholder {
-      <div>Images placeholder</div>
-      }
-    </mat-tab>
-    <mat-tab label="Reviews">
-      @defer(on viewport){<app-reviews [product]="product" />} @placeholder {
-      <div>Reviews placeholder</div>
-      }
-    </mat-tab>
-  </mat-tab-group> -->
+  <mat-tab-nav-panel #tabPanel><router-outlet /></mat-tab-nav-panel>
 </div>
 } @else if (store.isLoading()) {
 <mat-spinner></mat-spinner>

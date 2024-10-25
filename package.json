@@ -14,6 +14,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-architects/ngrx-toolkit": "^18.1.0",
     "@angular/animations": "^18.2.8",
     "@angular/cdk": "^18.2.8",
     "@angular/common": "^18.2.8",
@@ -24,7 +25,10 @@
     "@angular/platform-browser": "^18.2.8",
     "@angular/platform-browser-dynamic": "^18.2.8",
     "@angular/router": "^18.2.8",
+    "@ngrx/router-store": "^18.1.0",
     "@ngrx/signals": "^18.0.2",
+    "@ngrx/store": "^18.1.0",
+    "@ngrx/store-devtools": "^18.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"
@@ -40,6 +44,7 @@
     "autoprefixer": "^10.4.20",
     "brotli-webpack-plugin": "^1.1.0",
     "compression-webpack-plugin": "^11.1.0",
+    "cypress": "latest",
     "http-server": "^14.1.1",
     "jasmine-core": "~5.2.0",
     "karma": "~6.4.0",
@@ -50,7 +55,6 @@
     "lite-server": "^2.6.1",
     "postcss": "^8.4.45",
     "tailwindcss": "^3.4.10",
-    "typescript": "~5.5.2",
-    "cypress": "latest"
+    "typescript": "~5.5.2"
   }
 }

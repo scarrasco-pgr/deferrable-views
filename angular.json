@@ -1,11 +1,14 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "schematicCollections": ["@cypress/schematic", "@schematics/angular"]
+  },
   "newProjectRoot": "projects",
   "projects": {
     "defer-views": {
       "architect": {
         "build": {
-          "builder": "@angular-builders/custom-webpack:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "configurations": {
             "development": {
               "extractLicenses": false,
@@ -42,13 +45,9 @@
                 "input": "public"
               }
             ],
-            "customWebpackConfig": {
-              "path": "./webpack.config.js",
-              "replaceDuplicatePlugins": true
-            },
+            "browser": "src/main.ts",
             "index": "src/index.html",
             "inlineStyleLanguage": "scss",
-            "main": "src/main.ts",
             "outputPath": "dist/defer-views",
             "polyfills": [],
             "scripts": [],
@@ -57,6 +56,51 @@
               "src/styles.scss"
             ],
             "tsConfig": "tsconfig.app.json"
+          }
+        },
+        "ct": {
+          "builder": "@cypress/schematic:cypress",
+          "configurations": {
+            "development": {
+              "devServerTarget": "defer-views:serve:development"
+            }
+          },
+          "options": {
+            "devServerTarget": "defer-views:serve",
+            "headless": false,
+            "testingType": "component",
+            "watch": true
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "headless": false,
+            "watch": true
+          }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "configurations": {
+            "production": {
+              "devServerTarget": "defer-views:serve:production"
+            }
+          },
+          "options": {
+            "devServerTarget": "defer-views:serve"
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "configurations": {
+            "production": {
+              "devServerTarget": "defer-views:serve:production"
+            }
+          },
+          "options": {
+            "devServerTarget": "defer-views:serve",
+            "headless": false,
+            "watch": true
           }
         },
         "extract-i18n": {
@@ -83,63 +127,15 @@
                 "input": "public"
               }
             ],
+            "codeCoverage": true,
             "inlineStyleLanguage": "scss",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "scripts": [],
             "styles": [
               "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.scss"
             ],
-            "codeCoverage": true,
             "tsConfig": "tsconfig.spec.json"
-          }
-        },
-        "cypress-run": {
-          "builder": "@cypress/schematic:cypress",
-          "options": {
-            "devServerTarget": "defer-views:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "defer-views:serve:production"
-            }
-          }
-        },
-        "cypress-open": {
-          "builder": "@cypress/schematic:cypress",
-          "options": {
-            "watch": true,
-            "headless": false
-          }
-        },
-        "ct": {
-          "builder": "@cypress/schematic:cypress",
-          "options": {
-            "devServerTarget": "defer-views:serve",
-            "watch": true,
-            "headless": false,
-            "testingType": "component"
-          },
-          "configurations": {
-            "development": {
-              "devServerTarget": "defer-views:serve:development"
-            }
-          }
-        },
-        "e2e": {
-          "builder": "@cypress/schematic:cypress",
-          "options": {
-            "devServerTarget": "defer-views:serve",
-            "watch": true,
-            "headless": false
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "defer-views:serve:production"
-            }
           }
         }
       },
@@ -154,11 +150,5 @@
       "sourceRoot": "src"
     }
   },
-  "version": 1,
-  "cli": {
-    "schematicCollections": [
-      "@cypress/schematic",
-      "@schematics/angular"
-    ]
-  }
+  "version": 1
 }
