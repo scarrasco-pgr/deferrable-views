@@ -15,13 +15,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { Router, RouterLink } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { distinctUntilChanged } from 'rxjs';
 import { debounceTime } from 'rxjs/internal/operators/debounceTime';
 import { tap } from 'rxjs/internal/operators/tap';
 import { HighlightPipe } from '../../pipes/highlight.pipe';
 import { ProductsStore } from '../../store/products.store';
+import { selectQueryParam } from '../../store/router.selectors';
 import { ErrorComponent } from '../error/error.component';
 import { ResultsFoundComponent } from '../results-found/results-found.component';
+import { QUERY_PARAMS } from './query-paramter.constants';
 @Component({
   standalone: true,
   imports: [
@@ -44,6 +47,8 @@ import { ResultsFoundComponent } from '../results-found/results-found.component'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsListComponent implements OnInit {
+  query = inject(Store).selectSignal(selectQueryParam(QUERY_PARAMS.QUERY));
+  limit = inject(Store).selectSignal(selectQueryParam(QUERY_PARAMS.LIMIT));
   router = inject(Router);
   readonly store = inject(ProductsStore);
   filterControl = new FormControl(this.store.filter(), { nonNullable: true });
@@ -76,9 +81,14 @@ export class ProductsListComponent implements OnInit {
   );
 
   ngOnInit(): void {
-    this.store.loadAll();
+    this.query() || this.limit() ? this.setControl() : this.store.loadAll();
   }
   retry(): void {
     this.store.loadAll();
+  }
+
+  setControl(): void {
+    this.query() ? this.filterControl.setValue(this.query() as string) : null;
+    this.limit() ? this.limitControl.setValue(Number(this.limit())) : null;
   }
 }
