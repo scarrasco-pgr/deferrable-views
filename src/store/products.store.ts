@@ -1,4 +1,3 @@
-import { updateState, withDevtools } from '@angular-architects/ngrx-toolkit';
 import { HttpErrorResponse } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
@@ -27,15 +26,14 @@ const initialState: ProductsState = {
 
 export const ProductsStore = signalStore(
   { providedIn: 'root' },
-  withDevtools('products'),
   withState(initialState),
   withRequestStatus(),
   withMethods((store, service = inject(ProductsService)) => ({
     async loadAll(): Promise<void> {
-      updateState(store, 'set loading', setLoading());
+      patchState(store, setLoading());
       try {
         const products = (await service.get(store.limit())).products;
-        updateState(store, 'load all', { products });
+        patchState(store, { products });
       } catch (e) {
         const error = (e as HttpErrorResponse).message;
         patchState(store, { error });
@@ -44,10 +42,10 @@ export const ProductsStore = signalStore(
       }
     },
     async loadSingle(id: string): Promise<void> {
-      updateState(store, 'set loading', setLoading());
+      patchState(store,  setLoading());
       try {
         const product = await service.getSingle(id);
-        updateState(store, 'load single', { product });
+        patchState(store,  { product });
       } catch (e) {
         const error = (e as HttpErrorResponse).message;
         patchState(store, { error });
