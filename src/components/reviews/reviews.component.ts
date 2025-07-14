@@ -6,11 +6,10 @@ import { ProductBaseDirective } from '../../directives/base-product.directive';
 import { ProductsStore } from '../../store/products.store';
 
 @Component({
-  standalone: true,
-  imports: [MatIconModule, MatCardModule, DatePipe],
-  selector: 'app-reviews',
-  templateUrl: './reviews.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [MatIconModule, MatCardModule, DatePipe],
+    selector: 'app-reviews',
+    templateUrl: './reviews.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ReviewsComponent extends ProductBaseDirective {
   store = inject(ProductsStore);

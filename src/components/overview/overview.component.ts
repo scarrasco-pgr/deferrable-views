@@ -9,23 +9,22 @@ import { DimensionsComponent } from '../dimensions/dimensions.component';
 import { ReturnPolicyComponent } from '../return-policy/return-policy.component';
 import { StarRatingComponent } from '../star-rating/star-rating.component';
 @Component({
-  standalone: true,
-  imports: [
-    StarRatingComponent,
-    DimensionsComponent,
-    DetailsComponent,
-    ReturnPolicyComponent,
-    MatChipsModule,
-    CurrencyPipe,
-    MatExpansionModule,
-    NgOptimizedImage,
-  ],
-  selector: 'app-overview',
-  templateUrl: 'overview.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    class: 'flex flex-col items-center p-16',
-  },
+    imports: [
+        StarRatingComponent,
+        DimensionsComponent,
+        DetailsComponent,
+        ReturnPolicyComponent,
+        MatChipsModule,
+        CurrencyPipe,
+        MatExpansionModule,
+        NgOptimizedImage,
+    ],
+    selector: 'app-overview',
+    templateUrl: 'overview.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'flex flex-col items-center p-16',
+    }
 })
 export class OverviewComponent extends ProductBaseDirective {
   store = inject(ProductsStore);

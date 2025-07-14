@@ -4,11 +4,10 @@ import { ProductBaseDirective } from '../../directives/base-product.directive';
 import { ProductsStore } from '../../store/products.store';
 
 @Component({
-  standalone: true,
-  imports: [MatCardModule],
-  selector: 'app-images',
-  templateUrl: 'images.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [MatCardModule],
+    selector: 'app-images',
+    templateUrl: 'images.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ImagesComponent extends ProductBaseDirective {
   store = inject(ProductsStore);

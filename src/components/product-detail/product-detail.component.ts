@@ -17,24 +17,23 @@ import { ImagesComponent } from '../images/images.component';
 import { OverviewComponent } from '../overview/overview.component';
 import { ReviewsComponent } from '../reviews/reviews.component';
 @Component({
-  standalone: true,
-  imports: [
-    MatTabsModule,
-    RouterLink,
-    MatButtonModule,
-    MatIconModule,
-    MatProgressSpinnerModule,
-    ReviewsComponent,
-    ImagesComponent,
-    OverviewComponent,
-    ErrorComponent,
-    RouterOutlet,
-    RouterLink,
-    TitleCasePipe,
-  ],
-  selector: 'app-product-detail',
-  templateUrl: 'product-detail.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatTabsModule,
+        RouterLink,
+        MatButtonModule,
+        MatIconModule,
+        MatProgressSpinnerModule,
+        ReviewsComponent,
+        ImagesComponent,
+        OverviewComponent,
+        ErrorComponent,
+        RouterOutlet,
+        RouterLink,
+        TitleCasePipe,
+    ],
+    selector: 'app-product-detail',
+    templateUrl: 'product-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductDetailComponent implements OnInit {
   links = ['overview', 'images', 'reviews'];

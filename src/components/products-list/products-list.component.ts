@@ -26,25 +26,24 @@ import { ErrorComponent } from '../error/error.component';
 import { ResultsFoundComponent } from '../results-found/results-found.component';
 import { QUERY_PARAMS } from './query-paramter.constants';
 @Component({
-  standalone: true,
-  imports: [
-    MatCardModule,
-    MatProgressSpinnerModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatIconModule,
-    RouterLink,
-    HighlightPipe,
-    ResultsFoundComponent,
-    ErrorComponent,
-    MatSelectModule,
-    NgOptimizedImage,
-  ],
-  selector: 'app-products-list',
-  templateUrl: 'products-list.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatCardModule,
+        MatProgressSpinnerModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatIconModule,
+        RouterLink,
+        HighlightPipe,
+        ResultsFoundComponent,
+        ErrorComponent,
+        MatSelectModule,
+        NgOptimizedImage,
+    ],
+    selector: 'app-products-list',
+    templateUrl: 'products-list.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductsListComponent implements OnInit {
   query = inject(Store).selectSignal(selectQueryParam(QUERY_PARAMS.QUERY));
