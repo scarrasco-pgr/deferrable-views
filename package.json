@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "production": "http-server dist/defer-views/ --proxy http://localhost:8080? --gzip",
+    "production": "ng build && npx lite-server --baseDir=dist/defer-views/browser/",
     "e2e": "ng e2e",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
