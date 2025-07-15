@@ -10,7 +10,8 @@
     "production": "ng build && npx lite-server --baseDir=dist/defer-views/browser/",
     "e2e": "ng e2e",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run",
+    "serve:ssr:defer-views": "node dist/defer-views/server/server.mjs"
   },
   "private": true,
   "dependencies": {
@@ -23,11 +24,14 @@
     "@angular/material": "^20.1.0",
     "@angular/platform-browser": "^20.1.0",
     "@angular/platform-browser-dynamic": "^20.1.0",
+    "@angular/platform-server": "^20.1.0",
     "@angular/router": "^20.1.0",
+    "@angular/ssr": "^20.1.0",
     "@ngrx/router-store": "^20.0.0-rc.0",
     "@ngrx/signals": "^20.0.0-rc.0",
     "@ngrx/store": "^20.0.0-rc.0",
     "@ngrx/store-devtools": "^20.0.0-rc.0",
+    "express": "^5.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.1"
@@ -37,7 +41,9 @@
     "@angular/cli": "^20.1.0",
     "@angular/compiler-cli": "^20.1.0",
     "@cypress/schematic": "^2.5.2",
+    "@types/express": "^5.0.1",
     "@types/jasmine": "~5.1.0",
+    "@types/node": "^20.17.19",
     "@web/test-runner": "^0.20.2",
     "cypress": "latest",
     "http-server": "^14.1.1",
