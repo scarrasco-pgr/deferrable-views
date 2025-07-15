@@ -13,9 +13,6 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { ProductsStore } from '../../store/products.store';
 import { ErrorComponent } from '../error/error.component';
-import { ImagesComponent } from '../images/images.component';
-import { OverviewComponent } from '../overview/overview.component';
-import { ReviewsComponent } from '../reviews/reviews.component';
 @Component({
     imports: [
         MatTabsModule,
@@ -23,9 +20,6 @@ import { ReviewsComponent } from '../reviews/reviews.component';
         MatButtonModule,
         MatIconModule,
         MatProgressSpinnerModule,
-        ReviewsComponent,
-        ImagesComponent,
-        OverviewComponent,
         ErrorComponent,
         RouterOutlet,
         RouterLink,
